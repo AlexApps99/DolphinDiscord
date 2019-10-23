@@ -20,8 +20,8 @@ If you don\'t want to do that find out what to do yourself.
 '''
 
 autoinfo = {
-  "(pirating|downloading|torrenting|stealing)\s(a\s|an\s)?(wii\s|gc\s|gamecube\s|game\scube\s)?((game|iso|wad|gcm|rom|wbfs|ciso|img)s?\s)?(work|legit|legal|allowed|ok|easy|illegal|dangerous|safe|fast|quick)": piracy,
-  "(to|do|does|can|should|could)\s(you\s|i\s|one\s|somebody\s|someone\s|we\s)?(pirate|download|torrent|steal)\s(a\s|an\s)?(wii\s|gc\s|gamecube\s|game\scube\s)?(game|iso|wad|gcm|rom|wbfs|ciso|img)s?": piracy
+  "(pirating|downloading|torrenting|stealing)\s(a\s|an\s|the\s)?(wii\s|gc\s|gamecube\s|game\scube\s)?((game|iso|wad|gcm|rom|wbfs|ciso|img|title)s?\s)?(work|legit|legal|allowed|ok|easy|illegal|dangerous|safe|fast|quick)": piracy,
+  "(to|do|does|can|should|could|give)\s(you\s|i\s|one\s|somebody\s|someone\s|we\s|me\s)?(pirate|download|torrent|steal|free)\s(a\s|an\s|the\s)?(wii\s|gc\s|gamecube\s|game\scube\s)?(game|iso|wad|gcm|rom|wbfs|ciso|img|title)s?": piracy
 }
 
 if len(argv) == 2:
