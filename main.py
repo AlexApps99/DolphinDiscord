@@ -21,7 +21,7 @@ If you don\'t want to do that find out what to do yourself.
 
 autoinfo = {
   "(is\s|are\s)?(piracy|pirating|downloading|torrenting)\s((game|iso|wad|gcm|rom)s?\s)?(legal|allowed|ok|easy|illegal|dangerous)": piracy,
-  "how\s(to|do|does|can)\s(you|i|one|somebody|someone)?\s(pirate|download|torrent)\s(a\s|an\s)?(game|iso|wad|gcm|rom)s?": piracy
+  "(how\s)?(to|do|does|can)\s(you|i|one|somebody|someone)?\s(pirate|download|torrent)\s(a\s|an\s)?(game|iso|wad|gcm|rom)s?": piracy
 }
 
 if len(argv) == 2:
