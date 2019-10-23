@@ -19,7 +19,7 @@ class Moderation(commands.Cog):
     except discord.errors.Forbidden:
       await ctx.send('Sorry, I do not have permission to kick members.')
   
-  @commands.command(help='Explains our piracy policy')
+  @commands.command(help='Explains our piracy policy', aliases=['p', 'pirating'])
   async def piracy(self, ctx):
     '''
     Explains our piracy policy

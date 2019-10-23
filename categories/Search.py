@@ -74,7 +74,7 @@ class Search(commands.Cog):
       embed=embed
     )
 
-  @commands.group(help='Google for websites/images/videos')
+  @commands.group(help='Google for websites/images/videos', aliases=['g'])
   async def google(self, ctx):
     '''
     Googles searchquery, or images if you specified that
