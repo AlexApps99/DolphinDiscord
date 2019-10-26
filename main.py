@@ -20,8 +20,8 @@ If you don\'t want to do that find out what to do yourself.
 '''
 
 autoinfo = {
-  "(pirating|downloading|torrenting|stealing)\s(a\s|an\s|the\s)?(.*\s|wii\s|gc\s|gamecube\s|game\scube\s|nintendo\s)?((game|iso|wad|gcm|rom|wbfs|ciso|img|title)s?\s)?(work|legit|legal|allowed|ok|easy|illegal|dangerous|safe|fast|quick)": piracy,
-  "(to|do|does|can|should|could|give)\s(you\s|i\s|one\s|somebody\s|someone\s|anyone\s|anybody\s|we\s|me\s)?(have|get|pirate|download|torrent|steal|free)\s(a\s|an\s|the\s)?(.*\s|wii\s|gc\s|gamecube\s|game\scube\s|nintendo\s)?(game|iso|wad|gcm|rom|wbfs|ciso|img|title)s?": piracy
+  "(pirating|downloading|torrenting|stealing)\s(a\s|an\s|the\s|any\s|all\s)?(.*\s|wii\s|gc\s|gamecube\s|game\scube\s|nintendo\s)?((game|iso|wad|gcm|rom|wbfs|ciso|img|title)s?\s)?(work|legit|legal|allowed|ok|easy|illegal|dangerous|safe|fast|quick)": piracy,
+  "(to|do|does|can|should|could|give|who)\s(you\s|i\s|one\s|somebody\s|someone\s|anyone\s|anybody\s|we\s|me\s)?(has|have|get|pirate|download|torrent|steal|free)\s(a\s|an\s|the\s|any\s|all\s)?(.*\s|wii\s|gc\s|gamecube\s|game\scube\s|nintendo\s)?(game|iso|wad|gcm|rom|wbfs|ciso|img|title)s?": piracy
 }
 
 if len(argv) == 2:
