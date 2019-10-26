@@ -75,7 +75,7 @@ async def on_message(message):
     return
   if message.author.joined_at != None:
     if message.author.joined_at > datetime.now()-timedelta(days=3):
-      if any(w in message.content for w in ['get', 'pirate', 'download', 'torrent', 'free', 'pirating', 'downloading', 'torrenting'])
+      if any(w in message.content for w in ['get', 'pirate', 'download', 'torrent', 'free', 'pirating', 'downloading', 'torrenting']):
         if any(w in message.content for w in ['game', 'iso', 'wad', 'gcm', 'rom', 'wbfs', 'ciso', 'img']):
           await message.channel.send("This message has been autosent because you seem new to this server:\n"+piracy)
           return
