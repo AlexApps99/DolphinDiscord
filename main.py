@@ -67,21 +67,21 @@ async def on_command_error(ctx, error):
   '''
   Sends error message when error has happened
   '''
-  await ctx.send(embed=discord.Embed(title='Error', description=f'```diff\n- {error} -```', color=0xff0000))
+  await ctx.send(embed=discord.Embed(title='Error:', description=f'```diff\n- {error} -```', color=0xff0000))
 
 @bot.event
 async def on_message(message):
   if message.type != discord.MessageType.default or message.author == bot.user or message.author.bot:
     return
-  if message.author.joined_at != None:
+  if hasattr(message.author, 'joined_at') and message.author.joined_at != None:
     if message.author.joined_at > datetime.now()-timedelta(days=3):
       if any(w in message.content for w in ['get', 'pirate', 'download', 'torrent', 'free', 'pirating', 'downloading', 'torrenting']):
         if any(w in message.content for w in ['game', 'iso', 'wad', 'gcm', 'rom', 'wbfs', 'ciso', 'img']):
-          await message.channel.send("This message has been autosent because you seem new to this server:\n"+piracy)
+          await message.channel.send(embed=discord.Embed(title='Piracy Policy:', description="This message has been autosent because you seem new to this server:\n"+piracy))
           return
   for k, v in autoinfo.items():
     if re.search(k, message.content, flags=re.IGNORECASE) != None:
-      await message.channel.send(v)
+      await message.channel.send(embed=discord.Embed(title='Automessage:', description=v))
       break
   else:
     await bot.process_commands(message)

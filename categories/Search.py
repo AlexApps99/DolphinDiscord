@@ -52,7 +52,11 @@ class Search(commands.Cog):
           if category['title'].endswith(' stars (Rating)'):
             starsfound += 1
             compatibility = int(category['title'][9])
-    embed = discord.Embed(title='**' + article + '**', url=arturl, color=0x3FCAFF)
+    embed = discord.Embed(
+      title=f'**{article}**', 
+      url=arturl,
+      color=0x3FCAFF
+    )
     if starsfound != 0:
       embed.add_field(
         name="Compatibility:",
@@ -80,22 +84,22 @@ class Search(commands.Cog):
     Googles searchquery, or images if you specified that
     '''
     if ctx.invoked_subcommand is None:
-      await ctx.send(
+      await ctx.send(embed=discord.Embed(title='Google:', description=
         'Usage: `d!google [search|images|videos] [query]`\n'
         'Did you mean `d!google search [query]`?'
-      )
+      ))
   
   @google.command(name='search')
   async def googlesearch(self, ctx, *, query: str):
-    await ctx.send(f'<https://www.google.com/search?q={urllib.parse.quote_plus(query)}>')
+    await ctx.send(embed=discord.Embed(title='Google Search:', description=f'<https://www.google.com/search?q={urllib.parse.quote_plus(query)}>'))
   
   @google.command(name='images')
   async def googleimages(self, ctx, *, query: str):
-    await ctx.send(f'<https://www.google.com/search?tbm=isch&q={urllib.parse.quote_plus(query)}>')
+    await ctx.send(embed=discord.Embed(title='Google Images:', description=f'<https://www.google.com/search?tbm=isch&q={urllib.parse.quote_plus(query)}>'))
   
   @google.command(name='videos')
   async def googlevideos(self, ctx, *, query: str):
-    await ctx.send(f'<https://www.google.com/search?tbm=vid&q={urllib.parse.quote_plus(query)}>')
+    await ctx.send(embed=discord.Embed(title='Google Videos:', description=f'<https://www.google.com/search?tbm=vid&q={urllib.parse.quote_plus(query)}>'))
   
   
   @commands.group(help='Let me Google that for you')
@@ -104,22 +108,22 @@ class Search(commands.Cog):
     Let me Google that for you
     '''
     if ctx.invoked_subcommand is None:
-      await ctx.send(
+      await ctx.send(embed=discord.Embed(title='LMGTFY:', description=
         'Usage: `d!lmgtfy [search|images|videos] [query]`\n'
         'Did you mean `d!lmgtfy search [query]`?'
-      )
+      ))
   
   @lmgtfy.command(name='search')
   async def lmgtfysearch(self, ctx, *, query: str):
-    await ctx.send(f'<https://www.lmgtfy.com/search?t=w&q={urllib.parse.quote_plus(query)}>')
+    await ctx.send(embed=discord.Embed(title='LMGTFY Search:', description=f'<https://www.lmgtfy.com/search?t=w&q={urllib.parse.quote_plus(query)}>'))
   
   @lmgtfy.command(name='images')
   async def lmgtfyimages(self, ctx, *, query: str):
-    await ctx.send(f'<https://www.lmgtfy.com/search?t=i&q={urllib.parse.quote_plus(query)}>')
+    await ctx.send(embed=discord.Embed(title='LMGTFY Images:', description=f'<https://www.lmgtfy.com/search?t=i&q={urllib.parse.quote_plus(query)}>'))
   
   @lmgtfy.command(name='videos')
   async def lmgtfyvideos(self, ctx, *, query: str):
-    await ctx.send(f'<https://www.lmgtfy.com/search?t=v&q={urllib.parse.quote_plus(query)}>')
+    await ctx.send(embed=discord.Embed(title='LMGTFY Videos:', description=f'<https://www.lmgtfy.com/search?t=v&q={urllib.parse.quote_plus(query)}>'))
 
 
 def setup(bot):
