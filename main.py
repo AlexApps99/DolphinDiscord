@@ -21,8 +21,8 @@ If you don\'t want to do that find out what to do yourself.
 '''
 
 autoinfo = {
-  "(pirating|downloading|torrenting|stealing)\s(a\s|an\s|the\s|any\s|all\s)?(.*\s|wii\s|gc\s|gamecube\s|game\scube\s|nintendo\s)?((game|iso|wad|gcm|rom|wbfs|ciso|img|title)s?\s)?(work|legit|legal|allowed|ok|easy|illegal|dangerous|safe|fast|quick)": piracy,
-  "(to|do|does|can|should|could|give|who)\s(you\s|i\s|one\s|somebody\s|someone\s|anyone\s|anybody\s|we\s|me\s)?(has|have|get|pirate|download|torrent|steal|free)\s(a\s|an\s|the\s|any\s|all\s)?(.*\s|wii\s|gc\s|gamecube\s|game\scube\s|nintendo\s)?(game|iso|wad|gcm|rom|wbfs|ciso|img|title)s?": piracy
+  "(pirating|downloading|torrenting|stealing)\s+(a\s+|an\s+|the\s+|any\s+|all\s+)?((?:\w+)?\s+|wii\s+|gc\s+|gamecube\s+|game\s+cube\s+|nintendo\s+)?((game|iso|wad|gcm|rom|wbfs|ciso|img|title)s?\s+)?(work|legit|legal|allowed|ok|easy|illegal|dangerous|safe|fast|quick)": piracy,
+  "(to|do|does|can|should|could|give|who)\s+(you\s+|i\s+|one\s+|somebody\s+|someone\s+|anyone\s+|anybody\s+|we\s+|me\s+)?(has|have|get|pirate|download|torrent|steal|free)\s+(a\s+|an\s+|the\s+|any\s+|all\s+)?((?:\w+)?\s+|wii\s+|gc\s+|gamecube\s+|game\s+cube\s+|nintendo\s+)?(game|iso|wad|gcm|rom|wbfs|ciso|img|title)s?": piracy
 }
 
 if len(argv) == 2:
@@ -75,10 +75,9 @@ async def on_message(message):
     return
   if hasattr(message.author, 'joined_at') and message.author.joined_at != None:
     if message.author.joined_at > datetime.now()-timedelta(days=3):
-      if any(w in message.content for w in ['get', 'pirate', 'download', 'torrent', 'free', 'pirating', 'downloading', 'torrenting']):
-        if any(w in message.content for w in ['game', 'iso', 'wad', 'gcm', 'rom', 'wbfs', 'ciso', 'img']):
-          await message.channel.send(embed=discord.Embed(title='Piracy Policy:', description="This message has been autosent because you seem new to this server:\n"+piracy))
-          return
+      if any(w in message.content for w in ['pirate', 'torrent', 'free', 'pirating', 'piracy']):
+        await message.channel.send(embed=discord.Embed(title='Piracy Policy:', description="This message has been autosent because you seem new to this server:\n"+piracy))
+        return
   for k, v in autoinfo.items():
     if re.search(k, message.content, flags=re.IGNORECASE) != None:
       await message.channel.send(embed=discord.Embed(title='Automessage:', description=v))
