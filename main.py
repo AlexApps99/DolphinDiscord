@@ -80,8 +80,9 @@ async def on_message(message):
         return
   for k, v in autoinfo.items():
     if re.search(k, message.content, flags=re.IGNORECASE) != None:
-      await message.channel.send(embed=discord.Embed(title='Automessage:', description=v))
-      break
+      if not "question" in message.content:
+        await message.channel.send(embed=discord.Embed(title='Automessage:', description=v))
+        break
   else:
     await bot.process_commands(message)
 
