@@ -75,7 +75,7 @@ async def on_message(message):
     return
   if hasattr(message.author, 'joined_at') and message.author.joined_at != None:
     if message.author.joined_at > datetime.now()-timedelta(days=3):
-      if any(w in message.content for w in ['pirate', 'torrent', 'free', 'pirating', 'piracy']):
+      if any(w in message.content for w in ['pirate', 'torrent', 'pirating', 'piracy']):
         await message.channel.send(embed=discord.Embed(title='Piracy Policy:', description="This message has been autosent because you seem new to this server:\n"+piracy))
         return
   for k, v in autoinfo.items():
