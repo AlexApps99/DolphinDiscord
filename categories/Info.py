@@ -26,7 +26,7 @@ class Info(commands.Cog):
     ))
    
   @commands.command(help='Gives installation info for Chromebook users', aliases=['chromebook', 'cb'])
-  async def chromebook(self, ctx):
+  async def cbook(self, ctx):
     '''
     Gives installation info for Chromebook users
     '''
