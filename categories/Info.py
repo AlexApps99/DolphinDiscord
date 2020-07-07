@@ -30,7 +30,7 @@ class Info(commands.Cog):
     '''
     Gives installation info for Chromebook users
     '''
-    await ctx.send(embed=discord.Embed(title='Piracy Policy:', description=
+    await ctx.send(embed=discord.Embed(title='Chromebook starter guide:', description=
       'Crostini, referred to by Google as "Linux (Beta)," is not suitable for gaming.\n'
       'This includes Dolphin.\n'
       "There's a couple reasons for this, including (at the time this was written):\n"
