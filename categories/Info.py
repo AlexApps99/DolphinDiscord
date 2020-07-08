@@ -31,22 +31,22 @@ class Info(commands.Cog):
     Gives installation info for Chromebook users
     '''
     await ctx.send(embed=discord.Embed(title='Chromebook starter guide:', description=
-      'Crostini, referred to by Google as "Linux (Beta)," is not suitable for gaming.\n'
+      'Crostini, referred to by Google as "Linux (Beta)," is not suitable for gaming. '
       'This includes Dolphin.\n'
       "There's a couple reasons for this, including (at the time this was written):\n"
       '-Broken OpenGL drivers (no ARB_buffer_storage, something Dolphin uses for performance)\n'
       "-No Vulkan support (which runs better than OpenGL in just about every instance where it's supported)\n"
       '-The whole thing runs in a VM instead of having any sort of direct hardware access\n'
-      '-Absolutely no controller support over Bluetooth or USB whatsoever\n'
-      'If none of that means anything to you, in English that basically means Dolphin will run very badly if you use the ancient stable versions,\n'
-      "and it won't run at all if you use a beta or development version.\n"
-      'If you want to run Dolphin on your Chromebook, you have a few options.\n'
-      'These options are out of the scope of what we can provide support for here, unfortunately\n'
+      '-Absolutely no controller support over Bluetooth or USB whatsoever\n\n'
+      'If none of that means anything to you, in English that basically means Dolphin will run very badly if you use the ancient stable versions, '
+      "and it won't run at all if you use a beta or development version. "
+      'If you want to run Dolphin on your Chromebook, you have a few options.\n\n'
       "Your options are (do some research on these!):\n"
       '-Crouton (run a Linux operating system alongside Chrome OS and use a keyboard shortcut to switch between them at will)\n'
       '-chrx (dual boot Chrome OS and a Linux operating system - GalliumOS is HIGHLY recommended for Chromebooks)\n'
-      '-Google is apparently working on some sort of new Ubuntu environment for Chromebooks called Borealis that has Steam preinstalled, so you could try setting up Dolphin on that whenever it comes out\n'
-      "You'll have to find other support forums for these installations and be a bit computer savvy,\n"
+      '-Google is apparently working on some sort of new Ubuntu environment for Chromebooks called Borealis that has Steam preinstalled, so you could try setting up Dolphin on that whenever it comes out\n\n'
+      'These options are out of the scope of what we can provide support for here, unfortunately. '
+      "You'll have to find other support forums for these installations and be a bit computer savvy, "
       'but when you get them set up then this server can help you get Dolphin installed very easily.\n'
 
     ))
