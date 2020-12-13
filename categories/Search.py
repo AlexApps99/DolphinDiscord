@@ -165,7 +165,7 @@ class Search(commands.Cog):
         )
         embed.timestamp=update
         embed.add_field(
-          name="Author:",
+          name="Reported by:",
           value=author,
           inline=False
         )
