@@ -133,7 +133,7 @@ class Search(commands.Cog):
     '''
     Uses Dolphin Redmine to lookup bug reports
     '''
-    if (query.isdigit()):
+    if (query.isdecimal()):
         try:
             sea = requests.get(
               f'https://bugs.dolphin-emu.org/issues/{query}.json'
