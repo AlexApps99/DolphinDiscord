@@ -23,9 +23,9 @@ class Search(commands.Cog):
       ).json()['query']
       if sea['searchinfo']['totalhits'] != 0:
         break
-    else:
-      await ctx.send('Sorry, your search could not be found.')
-      return
+      else:
+        await ctx.send('Sorry, your search could not be found.')
+        return
     for x in range(len(sea['search'])):
       article = sea['search'][x]['title']
       req = requests.get(
@@ -35,9 +35,9 @@ class Search(commands.Cog):
       ).json()['query']['pages']
       if str(list(req)[0]) != "-1":
         break
-    else:
-      await ctx.send('Sorry, your search could not be found.')
-      return
+      else:
+        await ctx.send('Sorry, your search could not be found.')
+        return
     article = req[list(req)[0]]['title']
     arturl = req[list(req)[0]]['fullurl']
     lastedited = datetime.datetime.strptime(
@@ -57,7 +57,7 @@ class Search(commands.Cog):
       url=arturl,
       color=0x3FCAFF
     )
-    if starsfound != 0:
+    if starsfound != 0 and compatibility:
       embed.add_field(
         name="Compatibility:",
         value=':star:' * compatibility,
