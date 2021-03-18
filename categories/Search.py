@@ -16,28 +16,41 @@ class Search(commands.Cog):
     '''
     Uses Dolphin Wiki APIs to summarise search
     '''
-    for x in ['title', 'text', 'nearmatch']:
+    usedNearMatch = False
+    for x in ['nearmatch','title', 'text']:
       sea = requests.get(
         'https://wiki.dolphin-emu.org/api.php?action=query'
         f'&format=json&list=search&utf8=1&srsearch={query}&srlimit=5&srwhat={x}'
       ).json()['query']
-      if sea['searchinfo']['totalhits'] != 0:
+      if x == 'nearmatch' and sea['search']:
+        usedNearMatch = True
         break
-      else:
-        await ctx.send('Sorry, your search could not be found.')
-        return
-    for x in range(len(sea['search'])):
-      article = sea['search'][x]['title']
-      req = requests.get(
-        'https://wiki.dolphin-emu.org/api.php?action=query'
-        '&utf8=1&redirects&format=json&prop=info|categories'
-        f'&inprop=url&titles={article}'
-      ).json()['query']['pages']
-      if str(list(req)[0]) != "-1":
+      elif x != 'nearmatch' and sea['searchinfo']['totalhits'] != 0:
         break
-      else:
-        await ctx.send('Sorry, your search could not be found.')
-        return
+    else:
+      await ctx.send('Sorry, your search could not be found.')
+      return
+    
+    if usedNearMatch:
+        article = sea['search'][0]['title']
+        req = requests.get(
+           'https://wiki.dolphin-emu.org/api.php?action=query'
+           '&utf8=1&redirects&format=json&prop=info|categories'
+           f'&inprop=url&titles={article}'
+         ).json()['query']['pages']
+    else:
+      for x in range(len(sea['search'])):
+        article = sea['search'][x]['title']
+        req = requests.get(
+          'https://wiki.dolphin-emu.org/api.php?action=query'
+          '&utf8=1&redirects&format=json&prop=info|categories'
+          f'&inprop=url&titles={article}'
+        ).json()['query']['pages']
+        if str(list(req)[0]) != "-1":
+          break
+        else:
+          await ctx.send('Sorry, your search could not be found.')
+          return
     article = req[list(req)[0]]['title']
     arturl = req[list(req)[0]]['fullurl']
     lastedited = datetime.datetime.strptime(
@@ -53,7 +66,7 @@ class Search(commands.Cog):
             starsfound += 1
             compatibility = int(category['title'][9])
     embed = discord.Embed(
-      title=f'**{article}**', 
+      title=f'**{article}**',
       url=arturl,
       color=0x3FCAFF
     )
