@@ -240,7 +240,7 @@ class Search(commands.Cog):
         )
 
   @commands.command(
-    help='Search for Netplay sessions on the index, by name or RoomID (traversal only).',
+    help='Search for Netplay sessions on the index.',
     aliases=['np','party']
   )
   async def netplay(self, ctx, *, query: str):
