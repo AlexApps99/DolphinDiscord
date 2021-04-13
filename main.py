@@ -3,6 +3,7 @@
 Dolphin Discord 2.0
 By @AlexApps#9295
 Now comes in 8 different flavours of spaghetti!
+Happy April Fools Day!
 '''
 
 import os
@@ -15,9 +16,7 @@ import discord
 from discord.ext import commands
 
 piracy = '''
-Piracy is not allowed in this server. Please read the #rules!
-We will only support the dumping of games you own.
-If you don\'t want to do that find out what to do yourself.
+Piracy is not allowed in this server. Please complain to <@268818599290863616> in a DM and beg for information.
 '''
 
 autoinfo = {
@@ -67,7 +66,7 @@ async def on_command_error(ctx, error):
   '''
   Sends error message when error has happened
   '''
-  await ctx.send(embed=discord.Embed(title='Error:', description=f'```diff\n- {error} -```', color=0xff0000))
+  await ctx.send(embed=discord.Embed(title='Please notify <@268818599290863616> in a DM about this error\nError:', description=f'```diff\n- {error} -```', color=0xff0000))
 
 @bot.event
 async def on_message(message):
@@ -85,6 +84,8 @@ async def on_message(message):
         break
   else:
     await bot.process_commands(message)
+  me = await client.get_user_info('268818599290863616')
+  await client.send_message(me, "A message has been sent in Dolphin Discord! Go help them before they DM you!")
 
 for extension in ['categories.Misc', 'categories.Moderation', 'categories.Search', 'categories.Info']:
   bot.load_extension(extension)

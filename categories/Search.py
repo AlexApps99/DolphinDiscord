@@ -14,7 +14,7 @@ class Search(commands.Cog):
   )
   async def wiki(self, ctx, *, query: str):
     '''
-    Uses Dolphin Wiki APIs to summarise search
+    Uses Dolphin Wiki APIs to summarise search. DM <@268818599290863616> for more information.
     '''
     usedNearMatch = False
     for x in ['nearmatch','title', 'text']:
@@ -28,7 +28,7 @@ class Search(commands.Cog):
       elif x != 'nearmatch' and sea['searchinfo']['totalhits'] != 0:
         break
     else:
-      await ctx.send('Sorry, your search could not be found.')
+      await ctx.send('Sorry, your search could not be found. Complain to <@268818599290863616> in a DM please.')
       return
     
     if usedNearMatch:
@@ -49,7 +49,7 @@ class Search(commands.Cog):
         if str(list(req)[0]) != "-1":
           break
         else:
-          await ctx.send('Sorry, your search could not be found.')
+          await ctx.send('Sorry, your search could not be found. Complain to <@268818599290863616> in a DM please.')
           return
     article = req[list(req)[0]]['title']
     arturl = req[list(req)[0]]['fullurl']
@@ -87,19 +87,19 @@ class Search(commands.Cog):
     )
     embed.timestamp = lastedited
     await ctx.send(
-      f'**Search result for:** ***"{query}"***:',
+      f'**Complain to <@268818599290863616> in a DM please. Search result for:** ***"{query}"***:',
       embed=embed
     )
 
   @commands.group(help='Google for websites/images/videos', aliases=['g'])
   async def google(self, ctx):
     '''
-    Googles searchquery, or images if you specified that
+    Complain to <@268818599290863616> in a DM please. Googles searchquery, or images if you specified that
     '''
     if ctx.invoked_subcommand is None:
       await ctx.send(embed=discord.Embed(title='Google:', description=
         'Usage: `d!google [search|images|videos] [query]`\n'
-        'Did you mean `d!google search [query]`?'
+        'Did you mean `d!google search [query]`? If not, complain to <@268818599290863616> in a DM please.'
       ))
   
   @google.command(name='search')
@@ -115,10 +115,10 @@ class Search(commands.Cog):
     await ctx.send(embed=discord.Embed(title='Google Videos:', description=f'<https://www.google.com/search?tbm=vid&q={urllib.parse.quote_plus(query)}>'))
   
   
-  @commands.group(help='Let me Google that for you')
+  @commands.group(help='Let me Google that for you.')
   async def lmgtfy(self, ctx):
     '''
-    Let me Google that for you
+    Let me Google that for you. Complain to <@268818599290863616> in a DM please if you feel abused.
     '''
     if ctx.invoked_subcommand is None:
       await ctx.send(embed=discord.Embed(title='LMGTFY:', description=
@@ -144,7 +144,7 @@ class Search(commands.Cog):
   )
   async def bugs(self, ctx, *, query: str):
     '''
-    Uses Dolphin Redmine to lookup bug reports
+    Uses Dolphin Redmine to lookup bug reports. Complain to <@268818599290863616> in a DM for any problems you are having, personal or technical.
     '''
     if (query.isdecimal()):
         try:
@@ -152,7 +152,7 @@ class Search(commands.Cog):
               f'https://bugs.dolphin-emu.org/issues/{query}.json'
             ).json()['issue']
         except ValueError:
-            await ctx.send('Sorry, your search could not be found.')
+            await ctx.send('Sorry, your search could not be found. Complain to <@268818599290863616> in a DM please.')
             return
 
         id = sea['id']
@@ -249,7 +249,7 @@ class Search(commands.Cog):
         f'https://lobby.dolphin-emu.org/v0/list'
         ).json()['sessions']
     except:
-      await ctx.send('Sorry, the Netplay index seems to be down.')
+      await ctx.send('Sorry, the Netplay index seems to be down. Complain to <@268818599290863616> in a DM please.')
       return
     for party in sea:
         if party["name"] == query or party["server_id"] == query:
@@ -303,13 +303,13 @@ class Search(commands.Cog):
             if party["password"] == True:
                 embed.set_footer(text='Password required.')
             await ctx.send(
-              f'**Search result for:** ***"{query}"***:',
+              f'**Complain to <@268818599290863616> in a DM if you hate this message. Search result for:** ***"{query}"***:',
               embed=embed
             )
             return
         
     # No results, then fail.
-    await ctx.send('Sorry, your search could not be found.\n*Did you enable "Show in Netplay Browser"*?')
+    await ctx.send('Sorry, your search could not be found.\n*Did you enable "Show in Netplay Browser"*? Complain to <@268818599290863616> in a DM please.')
     return
             
   

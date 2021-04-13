@@ -15,9 +15,9 @@ class Moderation(commands.Cog):
         await user.kick(reason=f'Kicker: {ctx.author.name}#{ctx.author.discriminator}, Reason: {reason}')
         await ctx.send(embed=discord.Embed(title='Kick:', description=f'Game Over, {user.name}'))
       else:
-        await ctx.send(embed=discord.Embed(title='Error:', description='```diff\n- Sorry, you do not have permission to kick members. -```'))
+        await ctx.send(embed=discord.Embed(title='Error:', description='```diff\n- Sorry, you do not have permission to kick members. Complain to <@268818599290863616> in a DM please. -```'))
     except discord.errors.Forbidden:
-      await ctx.send(embed=discord.Embed(title='Error:', description='```diff\n- Sorry, I do not have permission to kick members. -```'))
+      await ctx.send(embed=discord.Embed(title='Error:', description='```diff\n- Sorry, I do not have permission to kick members. Complain to <@268818599290863616> in a DM please. -```'))
   
   @commands.command(help='Explains our piracy policy', aliases=['p', 'pirating'])
   async def piracy(self, ctx):
@@ -25,17 +25,13 @@ class Moderation(commands.Cog):
     Explains our piracy policy
     '''
     await ctx.send(embed=discord.Embed(title='Piracy Policy:', description=
-      'Piracy is not allowed in this server. Please read the #rules!\n'
-      'We will only support the dumping of games you own.\n'
-      'If you don\'t want to do that find out what to do yourself.'
+      'Piracy is not allowed in this server. Complain to <@268818599290863616> in a DM if you think this is unfair'
     ))
   
   @commands.command(help='Explain more about your hardware and Dolphin message.')
   async def explain(self, ctx):
     await ctx.send(embed=discord.Embed(title='How to explain your question:', description=
-      'To properly help you, we first need some more info.\n'
-      '- What version of dolphin are you running? (latest dev build is recommended to most)\n'
-      '- What are your system specs? (CPU, GPU, RAM, Windows version)'
+      'To properly help you, you need to DM <@268818599290863616> for futher assistance.'
     ))
 
 def setup(bot):
