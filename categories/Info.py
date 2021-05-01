@@ -45,7 +45,7 @@ class Info(commands.Cog):
       '-Crouton (run a Linux operating system alongside Chrome OS and use a keyboard shortcut to switch between them at will)\n'
       '-MrChromeBox firmware scripts (https://mrchromebox.tech/) to install standalone Linux distros (GalliumOS is not recommended despite being designed for Chromebooks due to how outdated it is, but you should ABSOLUTELY still read their documentation for it to understand Chromebook-specific issues, ESPECIALLY the GalliumOS hardware compatibility list (which will also apply to any other distro. For example, if internal audio is broken for a Chromebook in GalliumOS, it\'ll almost certainly be broken in any other distro.) - Google this!'
       '-Google is apparently working on some sort of new Ubuntu environment for Chromebooks called Borealis that has Steam preinstalled, so you could try setting up Dolphin on that whenever it comes out\n\n'
-      'ARM CHROMEBOOKS ONLY: Cadmium (specialized Linux distro for ARM Chromebooks) https://github.com/Maccraft123/Cadmium
+      'ARM CHROMEBOOKS ONLY: Cadmium (specialized Linux distro for ARM Chromebooks) https://github.com/Maccraft123/Cadmium'
       'These options are out of the scope of what we can provide support for here, unfortunately. '
       "You'll have to find other support forums for these installations and be a bit computer savvy, "
       'but when you get them set up then this server can help you get Dolphin installed very easily.\n'
