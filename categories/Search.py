@@ -128,15 +128,15 @@ class Search(commands.Cog):
   
   @lmgtfy.command(name='search')
   async def lmgtfysearch(self, ctx, *, query: str):
-    await ctx.send(embed=discord.Embed(title='LMGTFY Search:', description=f'<https://www.lmgtfy.com/search?t=w&q={urllib.parse.quote_plus(query)}>'))
+    await ctx.send(embed=discord.Embed(title='LMGTFY Search:', description=f'<https://www.lmgtfy.app/#gsc.tab=0&gsc.q={urllib.parse.quote_plus(query)}>'))
   
   @lmgtfy.command(name='images')
   async def lmgtfyimages(self, ctx, *, query: str):
-    await ctx.send(embed=discord.Embed(title='LMGTFY Images:', description=f'<https://www.lmgtfy.com/search?t=i&q={urllib.parse.quote_plus(query)}>'))
+    await ctx.send(embed=discord.Embed(title='LMGTFY Images:', description=f'<https://www.lmgtfy.app/#gsc.tab=0&gsc.q={urllib.parse.quote_plus(query)}>'))
   
   @lmgtfy.command(name='videos')
   async def lmgtfyvideos(self, ctx, *, query: str):
-    await ctx.send(embed=discord.Embed(title='LMGTFY Videos:', description=f'<https://www.lmgtfy.com/search?t=v&q={urllib.parse.quote_plus(query)}>'))
+    await ctx.send(embed=discord.Embed(title='LMGTFY Videos:', description=f'<https://www.lmgtfy.app/#gsc.tab=0&gsc.q={urllib.parse.quote_plus(query)}>'))
     
   @commands.command(
     help='Search for bugs with Dolphin Bug Reporter',
