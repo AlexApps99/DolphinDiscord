@@ -33,7 +33,7 @@ module.exports = {
 				.setRequired(true)
 		),
 	async execute(interaction) {
-		await interaction.deferReply({ ephemeral: true });
+		await interaction.deferReply();
 		const query = interaction.options.get('query').value;
 		let usedNearMatch = false;
 		let sea = null;
