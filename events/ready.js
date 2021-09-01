@@ -1,10 +1,9 @@
 const games = [
-	'Super Smash Bros. Melee',
-	'Mario Kart Wii',
-	'Super Mario Galaxy',
-	'Super Mario Sunshine',
-	'Xenoblade Chronicles',
-	'Wii Party',
+	'Cheggers Party Quiz',
+	'True Crime: New York City',
+	'Ninjabread Man',
+	'Smurfs Dance Party',
+	// TODO we need more high quality games to be added to the list
 ];
 
 const game = games[Math.floor(Math.random() * games.length)];
