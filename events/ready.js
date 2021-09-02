@@ -3,6 +3,8 @@ const games = [
 	'True Crime: New York City',
 	'Ninjabread Man',
 	'Smurfs Dance Party',
+	'CTGP-R',
+	'Shrek SuperSlam',
 	// TODO we need more high quality games to be added to the list
 ];
 
