@@ -1,6 +1,7 @@
 const fs = require('fs');
 const { Client, Collection, Intents } = require('discord.js');
 
+/**@type {import('discord.js').Client} */
 const client = new Client({ allowedMentions: false, intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 
 client.commands = new Collection();

@@ -13,6 +13,10 @@ const game = games[Math.floor(Math.random() * games.length)];
 module.exports = {
 	name: 'ready',
 	once: true,
+	/**
+	 * 
+	 * @param {import('discord.js').Client} client 
+	 */
 	execute(client) {
 		console.log(`Ready! Logged in as ${client.user.tag}`);
 		client.user.setActivity('/help - ' + game, { type: 'PLAYING' });

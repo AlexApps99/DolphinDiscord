@@ -17,10 +17,14 @@ const piracy_regexes = [
 
 module.exports = {
 	name: 'messageCreate',
+	/**
+	 * 
+	 * @param {import('discord.js').Message} message 
+	 */
 	execute(message) {
 		if (message.content) {
 			if (message.content.startsWith('d!')) {
-				message.reply('Dolphin Discord Bot no longer uses `d!` as a prefix, try `/` instead.');
+				message.reply('Dolphin Discord Bot no longer uses `d!` as a prefix, try `/` instead.'); // TODO make both work because we can ;)
 			} else {
 				for (const reg of piracy_regexes) {
 					if (message.content.search(reg) >= 0) {

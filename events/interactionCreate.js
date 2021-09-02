@@ -1,5 +1,10 @@
 module.exports = {
 	name: 'interactionCreate',
+	/**
+	 * 
+	 * @param {import('discord.js').CommandInteraction} interaction 
+	 * @returns 
+	 */
 	async execute(interaction) {
 		if (!interaction.isCommand()) return;
 
