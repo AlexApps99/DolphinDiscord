@@ -19,20 +19,20 @@ client.once('ready', () => {
 		guild.commands.fetch().then(() => {
 			guild.commands.cache.forEach(command => {
 				// Check if it exists in the list of commands
-				if (!client.commands.keys().includes(command.name)) {
+				if (!client.commands.has(command.name)) {
 					// Delete if there is no file for it
 					command.delete().catch(err => {
 						console.log(err);
 					});
 				}
 			});
-			client.commands.keys().forEach(cmdName => {
+			for (const cmdName of client.commands.keys()) {
 				// For all the commands, send the JSON over to the API
 				// According to Discord's documentation, commands that exist will simply be updated
-				guild.commands.create(client.commands.get(cmdName).toJSON()).catch((err) => {
+				guild.commands.create(client.commands.get(cmdName).data.toJSON()).catch((err) => {
 					console.log(err);
 				})
-			})
+			}
 		});
 	});
 
