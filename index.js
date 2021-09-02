@@ -6,13 +6,10 @@ const client = new Client({ allowedMentions: false, intents: [Intents.FLAGS.GUIL
 
 client.commands = new Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-let commandNames = [];
 
 for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
 	client.commands.set(command.data.name, command);
-	/**@type {Array<String>} */
-	commandNames.push(command.data.name);
 }
 
 client.once('ready', () => {
@@ -22,18 +19,33 @@ client.once('ready', () => {
 		guild.commands.fetch().then(() => {
 			guild.commands.cache.forEach(command => {
 				// Check if it exists in the list of commands
-				if (!commandNames.includes(command.name)) {
+				if (!client.commands.keys().includes(command.name)) {
 					// Delete if there is no file for it
-					command.delete();
+					command.delete().catch(err => {
+						console.log(err);
+					});
 				}
 			});
-			commandNames.forEach(cmdName => {
+			client.commands.keys().forEach(cmdName => {
 				// For all the commands, send the JSON over to the API
 				// According to Discord's documentation, commands that exist will simply be updated
-				guild.commands.create(client.commands.get(cmdName).toJSON())
+				guild.commands.create(client.commands.get(cmdName).toJSON()).catch((err) => {
+					console.log(err);
+				})
 			})
 		});
 	});
+
+	// temp, only needed to remove global commands for the per commands
+	client.application.commands.fetch().then(() => {
+		client.application.commands.cache.forEach(cmd => {
+			cmd.delete().catch(err => {
+				console.log(err);
+			})
+		})
+	})
+
+
 });
 
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
