@@ -13,8 +13,8 @@ function wiki(args = {}) {
 		...default_args,
 		...args,
 	});
-	let params_str = params.toString();
-	return fetch('https://wiki.dolphin-emu.org/api.php?' + params.toString()).then(res => {
+	const params_str = params.toString();
+	return fetch('https://wiki.dolphin-emu.org/api.php?' + params_str).then(res => {
 		if (res.ok) {
 			return res.json();
 		} else {
@@ -70,7 +70,7 @@ module.exports = {
 			req = req.query.pages;
 		} else {
 			for (const res of sea.search) {
-				let article = res.title;
+				const article = res.title;
 				req = await wiki({
 					redirects: 1,
 					prop: 'info|categories',
@@ -89,7 +89,7 @@ module.exports = {
 			await interaction.editReply('Sorry, your search could not be found.');
 			return;
 		}
-		let key = Object.keys(req)[0];
+		const key = Object.keys(req)[0];
 		const article = req[key]['title'];
 		const arturl = req[key]['fullurl'];
 		const lastedited = Date.parse(req[key]['touched']);

@@ -17,7 +17,7 @@ module.exports = {
 		.setDescription('Get the version of the latest dev release of Dolphin'),
 	async execute(interaction) {
 		await interaction.deferReply();
-		let i = await get_update_info();
+		const i = await get_update_info();
 		return interaction.editReply(i.new.name + " (" + i.new.hash + ")");
 	},
 };

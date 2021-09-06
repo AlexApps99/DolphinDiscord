@@ -15,7 +15,6 @@ function search_by_id(id) {
 }
 
 function search_by_query(query) {
-	// TODO URL escape everything dummy
 	return fetch("https://bugs.dolphin-emu.org/projects/emulator/search.json?limit=3&all_words=1&open_issues=1&titles_only=&q=" + encodeURIComponent(query)).then(res => {
 		if (res.ok) {
 			return res.json();
@@ -42,8 +41,8 @@ module.exports = {
 		await interaction.deferReply();
 		const query = interaction.options.get('query').value;
 		if (isInt(query)) {
-			let r = await search_by_id(query);
-			let issue = r.issue;
+			const r = await search_by_id(query);
+			const issue = r.issue;
 			let embed = new MessageEmbed()
 				.setTitle('**' + issue.subject + '**')
 				.setURL("https://bugs.dolphin-emu.org/issues/" + issue.id.toString())
@@ -53,7 +52,7 @@ module.exports = {
 				.addField("Reported by:", issue.author.name)
 				.addField("Status:", issue.status.name)
 				.setTimestamp(Date.parse(issue.updated_on));
-			let fixed = issue.custom_fields[9].value;
+			const fixed = issue.custom_fields[9].value;
 			if (fixed) embed = embed.addField("Fixed in:", fixed.toString() + ' | http://dolp.in/v' + fixed.toString());
 			return interaction.editReply({ content: "**Bug report for:** ***" + query + "***", embeds: [embed] });
 		} else {
