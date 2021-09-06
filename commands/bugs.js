@@ -2,6 +2,33 @@ const { MessageEmbed } = require('discord.js');
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const fetch = require('node-fetch');
 
+const INT_REG = /^\d+$/;
+
+function search_by_id(id) {
+	return fetch("https://bugs.dolphin-emu.org/issues/" + encodeURIComponent(id.toString()) + ".json").then(res => {
+		if (res.ok) {
+			return res.json();
+		} else {
+			throw new Error(`Invalid status: ${res.status} ${res.statusText}`);
+		}
+	});
+}
+
+function search_by_query(query) {
+	// TODO URL escape everything dummy
+	return fetch("https://bugs.dolphin-emu.org/projects/emulator/search.json?limit=3&all_words=1&open_issues=1&titles_only=&q=" + encodeURIComponent(query)).then(res => {
+		if (res.ok) {
+			return res.json();
+		} else {
+			throw new Error(`Invalid status: ${res.status} ${res.statusText}`);
+		}
+	});
+}
+
+function isInt(val) {
+  return INT_REG.test(val);
+}
+
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('bugs')
@@ -12,7 +39,26 @@ module.exports = {
 				.setRequired(true)
 		),
 	async execute(interaction) {
-		return interaction.reply("Sorry, this command has not been implemented yet. Ping <@292383975048216576> until he finishes rewriting the bot.");
+		await interaction.deferReply();
+		const query = interaction.options.get('query').value;
+		if (isInt(query)) {
+			let r = await search_by_id(query);
+			let issue = r.issue;
+			let embed = new MessageEmbed()
+				.setTitle('**' + issue.subject + '**')
+				.setURL("https://bugs.dolphin-emu.org/issues/" + issue.id.toString())
+				.setColor(0x3FCAFF)
+				.setAuthor('Dolphin Bug Reporter', 'https://wiki.dolphin-emu.org/images/dolphin.40.png', 'https://bugs.dolphin-emu.org/projects/emulator')
+				.setFooter('Report last modified', 'https://wiki.dolphin-emu.org/images/dolphin.40.png')
+				.addField("Reported by:", issue.author.name)
+				.addField("Status:", issue.status.name)
+				.setTimestamp(Date.parse(issue.updated_on));
+			let fixed = issue.custom_fields[9].value;
+			if (fixed) embed = embed.addField("Fixed in:", fixed.toString() + ' | http://dolp.in/v' + fixed.toString());
+			return interaction.editReply({ content: "**Bug report for:** ***" + query + "***", embeds: [embed] });
+		} else {
+			return interaction.editReply("Sorry, this command has not been implemented yet. Ping <@292383975048216576> until he finishes rewriting the bot.");
+		}
 	},
 };
 
