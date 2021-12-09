@@ -7,15 +7,15 @@ module.exports = {
 	 */
 	async execute(interaction) {
 		
-if(interaction.isButton())
-  {
-    if(interaction.customId === 'hide')
-    {
-      await interaction.deferUpdate();
-        interaction.deleteReply();
+	if(interaction.isButton())
+  		{
+    			if(interaction.customId === 'hide')
+    				{
+    					  await interaction.deferUpdate();
+        					interaction.deleteReply();
       
-    }
-    }
+    				}
+    		}
 
 
 		const command = interaction.client.commands.get(interaction.commandName);
