@@ -15,7 +15,7 @@ You can try: (do some research on these!):
 - MrChromeBox firmware scripts (https://mrchromebox.tech/) to install Linux distros (GalliumOS is not recommended despite being designed for Chromebooks due to how outdated it is, but you should still read their documentation for it to understand Chromebook-specific issues, like the hardware compatibility list. - Google this!
 - Google is apparently working on some sort of new Ubuntu environment for Chromebooks called Borealis that has Steam preinstalled, that may be a good option in the future
 - ARM CHROMEBOOKS ONLY: Cadmium (specialized Linux distro for ARM Chromebooks) https://github.com/Maccraft123/Cadmium
-- Breath (Chromebooks newer than 2017 only): An experimental way to natively run Linux on modern Chromebooks without replacing firmware https://milkydeveloper.github.io/cb-linux/docs.html#/
+- Breath (Chromebooks newer than 2017 only): An experimental way to natively run Linux on modern Chromebooks without replacing firmware https://github.com/cb-linux/breath
 
 These are unfortunately out of the scope of what we can provide support for here.
 You'll have to find other support forums for these methods and be a bit computer savvy, but when you get them set up then this server can help you get Dolphin installed very easily.`;
