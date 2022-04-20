@@ -3,7 +3,7 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 
 const text = `https://github.com/Ryochan7/DS4Windows
 Use DS4Windows to connect your Dualshock4 or Dualsense controller as an XInput device. 
-Or, set up its DSU server and configure Dolphin to use the Dshock/Dsense gyros for Wii Remote emulation.
+Or, set up its DSU server and configure Dolphin to use the Dshock/Dsense sensors for Wii Remote motion emulation.
 Refer to https://wiki.dolphin-emu.org/index.php?title=DSU_Client for more info on DSU.`;
 
 const embed = new MessageEmbed()
