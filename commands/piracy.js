@@ -1,7 +1,7 @@
 const { MessageEmbed } = require('discord.js');
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
-const text = `Piracy is illegal, and is not tolerated in this server. Previously owning a game does not make downloading the game legal. Please read <#521711544925552642>!
+const text = `Piracy is illegal, and is not tolerated in this server. Owning or previously owning a game does not make downloading it legal. Please read <#521711544925552642>!
 We will only provide support for games that you have dumped.
 Dump your games, or find out what to do yourself.`;
 
